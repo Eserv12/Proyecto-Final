@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./index.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { QueryClientProvider, QueryClient } from "react-query";
+import CartDetail from "./Routes/CartDetail/CartDetail";
+import Categories from "./Routes/Categories/Categories";
+import Home from "./Routes/Home/Home";
+import Layout from "./Components/Layout";
+import Login from "./Routes/Login/Login";
+import NotFound from "./Routes/NotFound/NotFound";
+import ProductCreate from "./Routes/Products/ProductCreate";
+import ProductDetail from "./Routes/Products/ProductDetail";
+import ProductEdit from "./Routes/Products/ProductEdit";
+import Products from "./Routes/Products/Products";
+import Register from "./Routes/Register/Register";
 
-function App() {
-  const [count, setCount] = useState(0)
+const queryClient = new QueryClient();
 
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/cart-detail" element={<CartDetail />} />
+            <Route path="/categories" element={<Categories />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/products/:id" element={<ProductDetail />} />
+            <Route path="/products/create" element={<ProductCreate />} />
+            <Route path="/products/edit/:id" element={<ProductEdit />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </QueryClientProvider>
+  );
 }
-
-export default App
