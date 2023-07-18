@@ -1,4 +1,4 @@
-import Category from "./components/Category";
+import CompCategories from "./Components/CompCategories";
 import { getCategories } from "../../Functions/queries";
 import Error from "../../Components/Error";
 import Loader from "../../Components/Loader";
@@ -15,7 +15,7 @@ return (
             {isError && <Error error={error} />}
             {isSuccess &&
             categories.map((cat) => {
-                return <Category key={cat.id} id={cat.id} name={cat.name} image={cat.image} />;
+                return <CompCategories key={cat.id} id={cat.id} name={cat.name} image={cat.image} />;
             })}
         </div>
     </div>

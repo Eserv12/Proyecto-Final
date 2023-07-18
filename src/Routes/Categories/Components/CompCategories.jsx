@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function Category(props) {
+export default function compcategories(props) {
 const { id, name, image } = props;
 
 const imageURL = image === "https://placeimg.com/640/480/any" ? "https://picsum.photos/640/640" : image;
