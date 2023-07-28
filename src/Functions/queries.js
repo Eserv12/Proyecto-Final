@@ -1,4 +1,4 @@
-import { URL_PRODUCTS, QUERY_KEY_PRODUCTS, URL_CATEGORIES, QUERY_KEY_CATEGORIES } from "../Constants/constants";
+import { URL_PRODUCTS, QUERY_KEY_PRODUCTS, URL_CATEGORIES, QUERY_KEY_CATEGORIES } from "../Constanst/constant";
 import { useQuery } from "react-query";
 
 export function getCategories() {
